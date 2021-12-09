@@ -21,16 +21,6 @@ namespace Avensia.Storefront.Developertest
             }
         }
 
-        public void ListProductInChunk(int skip, string currency)
-        {
-            var products = _productRepository.GetProducts().Skip(skip).Take(5);
-            if (products == null || products?.Count() == 0) Console.WriteLine("No product found");
-            foreach (var product in products)
-            {
-                Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price,currency)}");
-            }
-        }
-
         public void OutputPaginatedProducts(int start, int size, string currency)
         {
            
@@ -42,6 +32,23 @@ namespace Avensia.Storefront.Developertest
                 Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price, currency)}");
             }
         }
+
+        /// <summary>
+        ///  list products in chunk of 5
+        /// </summary>
+        /// <param name="skip"></param>
+        /// <param name="currency"></param>
+
+        public void ListProductInChunk(int skip, string currency)
+        {
+            var products = _productRepository.GetProducts().Skip(skip).Take(5);
+            if (products == null || products?.Count() == 0) Console.WriteLine("No product found");
+            foreach (var product in products)
+            {
+                Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price, currency)}");
+            }
+        }
+
         /// <summary>
         /// Convert rate based on USD
         /// </summary>
