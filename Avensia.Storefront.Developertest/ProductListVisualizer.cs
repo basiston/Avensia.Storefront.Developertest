@@ -17,15 +17,15 @@ namespace Avensia.Storefront.Developertest
             var products = _productRepository.GetProducts();
             foreach (var product in products)
             {
-                Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price,currency)}");
+                Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price, currency)}");
             }
         }
 
         public void OutputPaginatedProducts(int start, int size, string currency)
         {
-           
+
             var products = _productRepository.GetProducts(start, size);
-           
+
             if (products == null || products?.Count() == 0) Console.WriteLine("No product found");
             foreach (var product in products)
             {
@@ -69,15 +69,29 @@ namespace Avensia.Storefront.Developertest
                     return value * 6.06;
                 default:
                     return value;
-              
+
             }
-           
+
 
         }
 
-        public void OutputProductGroupedByPriceSegment()
+        public void OutputProductGroupedByPriceSegment(string currency)
         {
-            
+            var products = _productRepository.GetProducts().ToList();
+            var queryPrice =
+            from IProductDto in products
+            group IProductDto by IProductDto.Price into newGroup
+            orderby newGroup.Key
+            select newGroup;
+            foreach (var pGroup in queryPrice)
+            {
+                Console.WriteLine($"Price: {pGroup.Key}");
+                foreach (var product in pGroup)
+                {
+                    Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price, currency)}");
+                }
+            }
+ 
         }
     }
 }

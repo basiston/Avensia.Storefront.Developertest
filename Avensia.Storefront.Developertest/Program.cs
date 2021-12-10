@@ -46,7 +46,7 @@ namespace Avensia.Storefront.Developertest
                     case ConsoleKey.NumPad3:
                     case ConsoleKey.D3:
                         Console.WriteLine("Printing products grouped by price");
-                        productListVisualizer.OutputProductGroupedByPriceSegment();
+                        productListVisualizer.OutputProductGroupedByPriceSegment(currency);
                         break;
                     case ConsoleKey.NumPad4:
                     case ConsoleKey.D4:
