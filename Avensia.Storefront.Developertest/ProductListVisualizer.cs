@@ -63,19 +63,17 @@ namespace Avensia.Storefront.Developertest
 
             select newGroup;
             Console.WriteLine($"Price: {frPrice}-{toPrice}");
+           
             foreach (var pGroup in queryPrice)
             {
-
-                foreach (var product in pGroup)
-                {
-                    Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price, currency)}");
+               
+                    foreach (var product in pGroup)
+                    {
+                        Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price, currency)}");
+                    }
+                   
                 }
             }
-
-
-
-        }
-
         /// <summary>
         /// Convert rate based on USD
         /// </summary>
@@ -101,5 +99,9 @@ namespace Avensia.Storefront.Developertest
 
 
         }
+
+
     }
-}
+
+        
+    }
