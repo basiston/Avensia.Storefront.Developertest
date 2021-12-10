@@ -75,23 +75,29 @@ namespace Avensia.Storefront.Developertest
 
         }
 
-        public void OutputProductGroupedByPriceSegment(string currency)
+        public void OutputProductGroupedByPriceSegment(string currency, double frPrice, double toPrice)
         {
             var products = _productRepository.GetProducts().ToList();
+
             var queryPrice =
             from IProductDto in products
+            where IProductDto.Price > frPrice && IProductDto.Price < toPrice
+            orderby IProductDto.Price
             group IProductDto by IProductDto.Price into newGroup
-            orderby newGroup.Key
+
             select newGroup;
+            Console.WriteLine($"Price: {frPrice}-{toPrice}");
             foreach (var pGroup in queryPrice)
             {
-                Console.WriteLine($"Price: {pGroup.Key}");
+
                 foreach (var product in pGroup)
                 {
                     Console.WriteLine($"{product.Id}\t{product.ProductName}\t{ConvertRate(product.Price, currency)}");
                 }
             }
- 
+
+
+
         }
     }
 }
