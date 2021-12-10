@@ -20,14 +20,15 @@ namespace Avensia.Storefront.Developertest
                 Console.Write("Enter an option: ");
                
                 var input = Console.ReadKey();
-                Console.WriteLine("\n");
-                Console.WriteLine("Currency :");
-                string currency = Console.ReadLine();
+                
                 Console.WriteLine("\n");
                 switch (input.Key)
                 {
                     case ConsoleKey.NumPad1:
                     case ConsoleKey.D1:
+                        Console.WriteLine("\n");
+                        Console.WriteLine("Currency :");
+                        string currency = Console.ReadLine();
                         Console.WriteLine("Printing all products");
                         productListVisualizer.OutputAllProduct(currency);
                         break;
@@ -41,23 +42,19 @@ namespace Avensia.Storefront.Developertest
                         int size = Convert.ToInt32(Console.ReadLine());
 
                         Console.WriteLine("Printing paginated products");
-                        productListVisualizer.OutputPaginatedProducts(start,size,currency);
+                        productListVisualizer.OutputPaginatedProducts(start,size);
                         break;
                     case ConsoleKey.NumPad3:
                     case ConsoleKey.D3:
                         Console.WriteLine("\n");
-                        Console.WriteLine("Price From:");
-                        double from = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("\n");
-                        Console.WriteLine("Price To:");
-                        double to = Convert.ToInt32(Console.ReadLine());
+         
                         Console.WriteLine("Printing products grouped by price");
-                        productListVisualizer.OutputProductGroupedByPriceSegment(currency, from,to);
+                        productListVisualizer.OutputProductGroupedByPriceSegment();
                         break;
                     case ConsoleKey.NumPad4:
                     case ConsoleKey.D4:
                         Console.WriteLine("Printing products in chunk of five");
-                        productListVisualizer.ListProductInChunk(i,currency);
+                        productListVisualizer.ListProductInChunk(i);
                         i = i + 5;
                         break;
                     case ConsoleKey.Q:
