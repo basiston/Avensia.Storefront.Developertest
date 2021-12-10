@@ -49,31 +49,7 @@ namespace Avensia.Storefront.Developertest
             }
         }
 
-        /// <summary>
-        /// Convert rate based on USD
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="currency"></param>
-        /// <returns></returns>
-        private double ConvertRate(double value, string currency)
-        {
-            switch (currency?.ToUpper())
-            {
-                case "USD":
-                    return value;
-                case "SEK":
-                    return value * 8.38;
-                case "GBP":
-                    return value * 0.71;
-                case "DKK":
-                    return value * 6.06;
-                default:
-                    return value;
-
-            }
-
-
-        }
+     
 
         public void OutputProductGroupedByPriceSegment(string currency, double frPrice, double toPrice)
         {
@@ -96,6 +72,32 @@ namespace Avensia.Storefront.Developertest
                 }
             }
 
+
+
+        }
+
+        /// <summary>
+        /// Convert rate based on USD
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="currency"></param>
+        /// <returns></returns>
+        private double ConvertRate(double value, string currency)
+        {
+            switch (currency?.ToUpper())
+            {
+                case "USD":
+                    return value;
+                case "SEK":
+                    return value * 8.38;
+                case "GBP":
+                    return value * 0.71;
+                case "DKK":
+                    return value * 6.06;
+                default:
+                    return value;
+
+            }
 
 
         }
