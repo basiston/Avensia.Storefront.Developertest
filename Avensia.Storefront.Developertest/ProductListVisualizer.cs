@@ -49,25 +49,25 @@ namespace Avensia.Storefront.Developertest
             }
         }
 
-     
+
 
         public void OutputProductGroupedByPriceSegment()
         {
             var products = _productRepository.GetProducts().ToList();
-            var ranges = new[] {100, 200, 300, 400, 500,600,700,800,900,1000,1100,1200,1300,1400,1500 };
-            var grp = products.GroupBy(x => ranges.FirstOrDefault(r => r > x.Price)).OrderBy(p=>p.Key);
-            
+            var ranges = new[] { 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500 };
+            var grp = products.GroupBy(x => ranges.FirstOrDefault(r => r > x.Price)).OrderBy(p => p.Key);
+
             foreach (var pGroup in grp)
             {
-                
-                Console.WriteLine($"{pGroup.Key-100}-{pGroup.Key} kr");
-                    foreach (var product in pGroup)
-                    {
-                        Console.WriteLine($"{product.Id}\t{product.ProductName}\t{product.Price}");
-                    }
-                   
+
+                Console.WriteLine($"{pGroup.Key - 100}-{pGroup.Key} kr");
+                foreach (var product in pGroup)
+                {
+                    Console.WriteLine($"{product.Id}\t{product.ProductName}\t{product.Price}");
                 }
+
             }
+        }
         /// <summary>
         /// Convert rate based on USD
         /// </summary>
@@ -97,5 +97,5 @@ namespace Avensia.Storefront.Developertest
 
     }
 
-        
-    }
+
+}

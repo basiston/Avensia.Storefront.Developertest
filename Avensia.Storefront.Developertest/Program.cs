@@ -18,9 +18,9 @@ namespace Avensia.Storefront.Developertest
             while (shouldRun)
             {
                 Console.Write("Enter an option: ");
-               
+
                 var input = Console.ReadKey();
-                
+
                 Console.WriteLine("\n");
                 switch (input.Key)
                 {
@@ -36,18 +36,18 @@ namespace Avensia.Storefront.Developertest
                     case ConsoleKey.D2:
                         Console.WriteLine("\n");
                         Console.WriteLine("Start:");
-                        int start = Convert.ToInt32( Console.ReadLine());
+                        int start = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("\n");
                         Console.WriteLine("Page Size :");
                         int size = Convert.ToInt32(Console.ReadLine());
 
                         Console.WriteLine("Printing paginated products");
-                        productListVisualizer.OutputPaginatedProducts(start,size);
+                        productListVisualizer.OutputPaginatedProducts(start, size);
                         break;
                     case ConsoleKey.NumPad3:
                     case ConsoleKey.D3:
                         Console.WriteLine("\n");
-         
+
                         Console.WriteLine("Printing products grouped by price");
                         productListVisualizer.OutputProductGroupedByPriceSegment();
                         break;
